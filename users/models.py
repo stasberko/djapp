@@ -10,7 +10,8 @@ class CustomUserManager(BaseUserManager):
 
     def _create_user(self, email, password, **extra_fields):
         email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+        username = email.partition("@")[0]
+        user = self.model(email=email,username = username, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -29,7 +30,6 @@ class MyUser(AbstractBaseUser):
     email = models.EmailField('email', unique=True)
     is_active = models.BooleanField('active', default=True)
     username = models.CharField("username", max_length=30, blank=True)
-    # TODO: better email
     first_name = models.CharField('first name', max_length=30, blank=True)
     last_name = models.CharField('last name', max_length=30, blank=True)
     is_super = models.BooleanField(default=False)
@@ -45,8 +45,6 @@ class MyUser(AbstractBaseUser):
 
     @property
     def is_superuser(self):
-        #TODO: Repare this
-        return True
         return self.is_super
 
     def get_full_name(self):
@@ -54,7 +52,7 @@ class MyUser(AbstractBaseUser):
         return full_name.strip()
 
     def get_short_name(self):
-        return self.first_name
+        return self.username
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
