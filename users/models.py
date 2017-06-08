@@ -28,6 +28,7 @@ class CustomUserManager(BaseUserManager):
 class MyUser(AbstractBaseUser):
     email = models.EmailField('email', unique=True)
     is_active = models.BooleanField('active', default=True)
+    username = models.CharField("username", max_length=30, blank=True)
     # TODO: better email
     first_name = models.CharField('first name', max_length=30, blank=True)
     last_name = models.CharField('last name', max_length=30, blank=True)
@@ -44,6 +45,7 @@ class MyUser(AbstractBaseUser):
 
     @property
     def is_superuser(self):
+        #TODO: Repare this
         return True
         return self.is_super
 
