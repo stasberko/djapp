@@ -43,14 +43,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #AllAuth
     'django.contrib.sites',
-
-
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
+    #Contact moodel
+    "django_countries",
+    'contacts',
+    'phonenumber_field',
 
     'users',
+    'main'
 
 ]
 
@@ -136,6 +139,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
 
 
 AUTHENTICATION_BACKENDS = (

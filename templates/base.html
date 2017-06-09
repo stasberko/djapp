@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Bootstrap 101 Template</title>
-
+    <link rel="stylesheet" href = "{% static "jumbotron.css" %}" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="{% static "users/signin.css" %}">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -23,9 +24,9 @@
      <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="/accounts/logout/">Logout</a></li>
+          <li class="active"><a href="{% url "main" %}">Home</a></li>
+          <li><a href="#">Contacts</a></li>
+          <li><a href="{% url "account_logout" %}">Logout</a></li>
         </ul>
         <h3 class="text-muted">Project name</h3>
       </div>
@@ -33,30 +34,26 @@
 {% block content %}
       <div class="jumbotron">
       {% block usergrt %}
-        <h1>Jumbotron heading</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <h1>base page</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut dignissim magna, id rhoncus sem. Donec feugiat molestie rutrum. Aenean non urna et lacus malesuada aliquet.</p>
         <p><a class="btn btn-lg btn-success" href="{% url 'login' %}" role="button">Sign up</a></p>
       {% endblock usergrt %}
           </div>
 
       <div class="row marketing">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
           <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut dignissim magna, id rhoncus sem. Donec feugiat molestie rutrum. Aenean non urna et lacus malesuada aliquet.
+              <p>Suspendisse ut dui suscipit, consectetur lectus quis, varius arcu. Quisque quis suscipit enim. Donec id turpis dolor. Mauris commodo enim vitae lorem laoreet, dapibus maximus ligula tincidunt.
+
+        <div class="col-lg-12">
+          <h4>Subheading</h4>
+          <p>Nam enim sapien, tincidunt nec lobortis a, blandit ultrices nisi. Cras euismod mauris quis consectetur dignissim. Proin vel sem dolor. Aliquam sit amet dolor nisl.
+            <p>Proin consequat libero ut tellus porta, vitae iaculis risus posuere. Curabitur dictum facilisis sapien at vehicula. Integer scelerisque pharetra lacus vel venenatis.</p>
 
           <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
-
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+          <p>Fusce a purus vitae tellus sollicitudin fermentum. In hac habitasse platea dictumst. Nulla gravida leo vitae elit gravida, sed mattis dui venenatis. Nullam aliquet eleifend justo, vitae hendrerit leo suscipit non.
+            <p>Phasellus id neque a mauris aliquam lobortis. Vivamus ut metus massa. Etiam aliquet massa nisi, ac hendrerit elit fringilla eget. Nulla facilisi. Proin aliquet ac odio sed porttitor.
 
           <h4>Subheading</h4>
           <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
