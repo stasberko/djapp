@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^users/', include("users.urls")),
+    url(r'^contacts/', include("contacts.urls")),
     url(r'^',include('main.urls'))
 ]
