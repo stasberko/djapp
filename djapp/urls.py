@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^users/', include("users.urls")),
     url(r'^contacts/', include("contacts.urls")),
+    url(r'^captcha/', include('captcha.urls')),
     url(r'^',include('main.urls'))
 ]

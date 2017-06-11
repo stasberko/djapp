@@ -2,9 +2,9 @@
 {% load staticfiles %}
 
 
-{% block stylesheet %}
+{% block head %}
     <link rel="stylesheet" href="{% static "users/signin.css" %}">
-{% endblock stylesheet %}
+{% endblock head %}
 
 
 {% block content %}
@@ -12,7 +12,7 @@
 
 
         <p>Please sign in with one
-            of your existing third party accounts. Or, <a href="{% url "account_signup" %}">sign up</a>
+            of your existing third party accounts. Or, <a href="{% url "signup" %}">sign up</a>
             for a UserApp account and sign in below:</p>
 
         <div class="socialaccount_ballot">

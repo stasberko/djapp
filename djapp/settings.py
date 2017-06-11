@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     "django_countries",
     'contacts',
     'phonenumber_field',
+    'bootstrap3',
+    'captcha',
 
     'users',
     'main'
@@ -160,3 +162,6 @@ ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False
 
 LOGIN_REDIRECT_URL = "/users/"
 ACCOUNT_LOGOUT_REDIRECT_URL = "/"
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025

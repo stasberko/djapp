@@ -7,73 +7,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Django App</title>
-    <link rel="stylesheet" href = "{% static "jumbotron.css" %}" >
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "jumbotron.css" %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    {% block stylesheet %} {% endblock stylesheet %}
+    {% block head %}
+
+    {% endblock head %}
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
+
+
 <body>
 
-
-
-     <div class="container">
-      <div class="header">
+<div class="container">
+    <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="{% url "main" %}">Home</a></li>
-          <li><a href="{% url "new_contacts" %}">Contacts</a></li>
-          <li><a href="{% url "account_logout" %}">Logout</a></li>
+            <li class="active"><a href="{% url "main" %}">Home</a></li>
+            <li><a href="{% url "new_contacts" %}">Contacts</a></li>
+            {% if  request.user.is_authenticated %}
+                <li><a href="{% url "account_logout" %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url "login" %}">Login</a></li>
+            {% endif %}
         </ul>
         <h3 class="text-muted">Project name</h3>
-      </div>
+    </div>
 
-{% block content %}
-      <div class="jumbotron">
-      {% block usergrt %}
-        <h1>base page</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut dignissim magna, id rhoncus sem. Donec feugiat molestie rutrum. Aenean non urna et lacus malesuada aliquet.</p>
-        <p><a class="btn btn-lg btn-success" href="{% url 'login' %}" role="button">Sign up</a></p>
-      {% endblock usergrt %}
-          </div>
 
-      <div class="row marketing">
-        <div class="col-lg-12">
-          <h4>Subheading</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut dignissim magna, id rhoncus sem. Donec feugiat molestie rutrum. Aenean non urna et lacus malesuada aliquet.
-              <p>Suspendisse ut dui suscipit, consectetur lectus quis, varius arcu. Quisque quis suscipit enim. Donec id turpis dolor. Mauris commodo enim vitae lorem laoreet, dapibus maximus ligula tincidunt.
-
-        <div class="col-lg-12">
-          <h4>Subheading</h4>
-          <p>Nam enim sapien, tincidunt nec lobortis a, blandit ultrices nisi. Cras euismod mauris quis consectetur dignissim. Proin vel sem dolor. Aliquam sit amet dolor nisl.
-            <p>Proin consequat libero ut tellus porta, vitae iaculis risus posuere. Curabitur dictum facilisis sapien at vehicula. Integer scelerisque pharetra lacus vel venenatis.</p>
-
-          <h4>Subheading</h4>
-          <p>Fusce a purus vitae tellus sollicitudin fermentum. In hac habitasse platea dictumst. Nulla gravida leo vitae elit gravida, sed mattis dui venenatis. Nullam aliquet eleifend justo, vitae hendrerit leo suscipit non.
-            <p>Phasellus id neque a mauris aliquam lobortis. Vivamus ut metus massa. Etiam aliquet massa nisi, ac hendrerit elit fringilla eget. Nulla facilisi. Proin aliquet ac odio sed porttitor.
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+    {% block content %}
+        <div class="jumbotron">
+            {% block usergrt %}
+                <h1>base page</h1>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut dignissim magna, id
+                    rhoncus sem. Donec feugiat molestie rutrum. Aenean non urna et lacus malesuada aliquet.</p>
+                <p><a class="btn btn-lg btn-success" href="{% url 'signup' %}" role="button">Sign up</a></p>
+            {% endblock usergrt %}
         </div>
-      </div>
-{% endblock content %}
+
+        <div class="row marketing">
+            <div class="col-lg-12">
+                <h4>Subheading</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut dignissim magna, id rhoncus sem.
+                    Donec feugiat molestie rutrum. Aenean non urna et lacus malesuada aliquet.
+                <p>Suspendisse ut dui suscipit, consectetur lectus quis, varius arcu. Quisque quis suscipit enim. Donec
+                    id turpis dolor. Mauris commodo enim vitae lorem laoreet, dapibus maximus ligula tincidunt.
+
+                    <div class="col-lg-12">
+                        <h4>Subheading</h4>
+                <p>Nam enim sapien, tincidunt nec lobortis a, blandit ultrices nisi. Cras euismod mauris quis
+                    consectetur dignissim. Proin vel sem dolor. Aliquam sit amet dolor nisl.
+                <p>Proin consequat libero ut tellus porta, vitae iaculis risus posuere. Curabitur dictum facilisis
+                    sapien at vehicula. Integer scelerisque pharetra lacus vel venenatis.</p>
+
+                <h4>Subheading</h4>
+                <p>Fusce a purus vitae tellus sollicitudin fermentum. In hac habitasse platea dictumst. Nulla gravida
+                    leo vitae elit gravida, sed mattis dui venenatis. Nullam aliquet eleifend justo, vitae hendrerit leo
+                    suscipit non.
+                <p>Phasellus id neque a mauris aliquam lobortis. Vivamus ut metus massa. Etiam aliquet massa nisi, ac
+                    hendrerit elit fringilla eget. Nulla facilisi. Proin aliquet ac odio sed porttitor.
+
+                <h4>Subheading</h4>
+                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </div>
+        </div>
+    {% endblock content %}
 
 
-      <div class="footer">
+    <div class="footer">
         <p>&copy; Company 2014</p>
-      </div>
+    </div>
 
-    </div> <!-- /container -->
+</div> <!-- /container -->
 
 
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 </body>
 </html>

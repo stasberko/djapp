@@ -13,6 +13,7 @@ class Contacts(models.Model):
     )
 
     nickname = models.CharField( max_length=30, null=True)
+    email = models.EmailField("Email")
     country = CountryField(blank_label='Select country', null=True)
     #TODO: Do regex valid
     phone_number = PhoneNumberField(null=True, unique=True)
@@ -24,5 +25,3 @@ class Contacts(models.Model):
     def __str__(self):
     #TODO: good str
         return self.nickname
-
-Contacts.MALE
