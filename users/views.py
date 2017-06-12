@@ -4,7 +4,7 @@ from django.shortcuts import render, HttpResponse
 
 
 def users(request):
-    return render(request, "users/profile.html")
+    return render(request, "base.html")
 
 
 def login(request):

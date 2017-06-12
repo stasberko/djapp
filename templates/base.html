@@ -32,7 +32,7 @@
             <li><a href="{% url "new_contacts" %}">Contacts</a></li>
             {% if  request.user.is_authenticated %}
                 <li><a href="{% url "account_logout" %}">Logout</a></li>
-                {% else %}
+            {% else %}
                 <li><a href="{% url "login" %}">Login</a></li>
             {% endif %}
         </ul>
@@ -42,12 +42,18 @@
 
     {% block content %}
         <div class="jumbotron">
-            {% block usergrt %}
+
+
+            {% if request.user.is_authenticated %}
+                <h1><p> Hello, {{ request.user.username }}</p></h1>
+            {% else %}
                 <h1>base page</h1>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut dignissim magna, id
                     rhoncus sem. Donec feugiat molestie rutrum. Aenean non urna et lacus malesuada aliquet.</p>
                 <p><a class="btn btn-lg btn-success" href="{% url 'signup' %}" role="button">Sign up</a></p>
-            {% endblock usergrt %}
+            {% endif %}
+
+
         </div>
 
         <div class="row marketing">
