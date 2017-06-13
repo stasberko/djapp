@@ -29,7 +29,7 @@ SECRET_KEY = 'cjeq_bhu)1yc6g-=u9-suw&h+%$=mi7r#^03l-1%is!f_%pte0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.lc']
 
 
 # Application definition
