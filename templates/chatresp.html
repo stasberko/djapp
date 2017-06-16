@@ -1,0 +1,9 @@
+{% if obj %}
+{% for m in obj %}
+    <h3>{{ m.auth }}</h3>
+    <h4>{{ m.mess }}</h4>
+    <br>
+{% endfor %}
+{% else %}
+    No message yet!
+{% endif %}

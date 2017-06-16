@@ -46,6 +46,7 @@
 
             {% if request.user.is_authenticated %}
                 <h1><p> Hello, {{ request.user.username }}</p></h1>
+                <p><a class="btn btn-lg btn-success" href="{% url 'chat' %}" role="button">Chat</a></p>
             {% else %}
                 <h1>base page</h1>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut dignissim magna, id
@@ -99,4 +100,7 @@
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 </body>
+{% block script %}
+
+{% endblock script %}
 </html>

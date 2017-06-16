@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="jumbotron">
+            <form id="new_message">{% csrf_token %}
+                <input type="text" id="mess"/>
+                <input type="submit" value="SEND">
+            </form>
+
+
+        </div>
+    <div id="target"></div>
+    </div>
+
+{% endblock content %}
+
+{% block script %}
+    <script type="text/javascript">
+        $(document).on('submit', '#new_message', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '{% url 'rcv_message' %}',
+                data: {
+                    mess: $('#mess').val(),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+    setInterval(function () {
+          $.get("{% url 'mess_liad' %}", function (data)
+            {
+                $("#target").html(data);
+            }
+            );}, 2000)
+    </script>
+
+
+
+{% endblock script %}

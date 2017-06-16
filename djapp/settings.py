@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'bootstrap3',
     'captcha',
 
+
+    'message',
     'users',
     'main'
 
@@ -158,9 +160,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 
-# ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False
 
-
+LOGIN_URL = '/users/login/'
 LOGIN_REDIRECT_URL = "/users/"
 ACCOUNT_LOGOUT_REDIRECT_URL = "/"
 
