@@ -57,7 +57,8 @@ INSTALLED_APPS = [
 
     'message',
     'users',
-    'main'
+    'main',
+    'xml_parse'
 
 ]
 
@@ -172,3 +173,15 @@ EMAIL_PORT = 587
 EMAIL_HOST_PASSWORD = "QAzxsw@#45"
 EMAIL_HOST_USER = "EdwardDubin57@gmail.com"
 DEFAULT_FROM_EMAIL  = "EdwardDubin57@gmail.com"
+
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
+        "KEY_PREFIX": "example"
+    }
+}

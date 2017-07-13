@@ -2,12 +2,11 @@ from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
 from .models import Message
 from django.contrib.auth.decorators import login_required
-import json
 
 
 @login_required()
 def chat(request):
-    return render(request, "")
+    return render(request, "messages/chat.html")
 
 @login_required()
 def receive_message(request):
@@ -21,4 +20,4 @@ def receive_message(request):
 
 def mess_liad(request):
     obj = Message.objects.all().order_by("-dtime")[:10]
-    return render_to_response("chatresp.html", { 'obj': obj })
+    return render_to_response("messages/chatresp.html", {'obj': obj})

@@ -18,10 +18,11 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r"^chat/", include('message.urls', namespace='chat')),
+    url(r"^chat/", include('message.urls')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^users/', include("users.urls")),
     url(r'^contacts/', include("contacts.urls")),
     url(r'^captcha/', include('captcha.urls')),
-    url(r'^',include('main.urls'))
+    url(r'^xml/', include('xml_parse.urls')),
+    url(r'^', include('main.urls'))
 ]
